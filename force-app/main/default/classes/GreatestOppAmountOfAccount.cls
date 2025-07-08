@@ -27,7 +27,7 @@ public class GreatestOppAmountOfAccount {
                 
                 accIdToHighestOppMap.put(opp.AccountId, opp);
             }
-        }
+        } //testing git hub
         
         List<Account> accToUpdate = [SELECT Id, Opportunity_With_Highest_Amount__c 
                                      FROM Account 
