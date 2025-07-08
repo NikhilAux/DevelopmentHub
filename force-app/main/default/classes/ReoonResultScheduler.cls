@@ -2,7 +2,7 @@ global class ReoonResultScheduler implements Schedulable {
     String taskId;
 
     public ReoonResultScheduler(String taskId) {
-        this.taskId = taskId;
+        this.taskId = taskId; //get task id from task record
     }
 
     global void execute(SchedulableContext sc) {
