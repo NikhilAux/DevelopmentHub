@@ -1,0 +1,59 @@
+<!--
+@description: This component is the parent component that is used to display the character counting component. Its purpose is to facilitate
+communication between its subcomponents and the user entered settings to display the character counter as desired. This component is the component
+that will actually be placed within your lightning app builder page, new record page, flow, etc. Its variables are exposed and available to both
+flows and lightning app builder record pages
+-->
+
+<template>
+	<lightning-card class="card-background" lwc:if={displayAsIndependentSection} title={sectionHeader} variant="narrow" icon-name={iconName}>
+		<c-character_counter_record_view_form lwc:if={notEditingAndDataRetrieved}
+											  record-id={recordId}
+											  object-api-name={objectApiName}
+											  field-data={fieldData}
+											  field-columns={fieldColumns}
+											  render-edit-button={renderEditButton}
+											  onenableedit={enableEditing}>
+		</c-character_counter_record_view_form>
+		<c-character_counter_record_edit_component if:true={userEditingOrCreating}
+												   record-id={recordId}
+												   object-api-name={objectApiName}
+												   field-data={fieldData}
+												   field-columns={fieldColumns}
+												   character-warning-threshold={characterWarningThreshold}
+												   render-save-button={renderSaveButton}
+												   ondisableedit={disableEditing}
+												   onupdatefielddata={updateFieldData}>
+		</c-character_counter_record_edit_component>
+	</lightning-card>
+
+	<lightning-accordion if:true={displayAsFieldSection} class="accordion-background"
+						 active-section-name={activeSections}
+						 allow-multiple-sections-open>
+		<lightning-accordion-section class="counting-accordion"
+									 name={sectionHeader}
+									 label={sectionHeader}>
+			<c-character_counter_record_view_form if:true={notEditingAndDataRetrieved}
+												  class="toggle"
+												  record-id={recordId}
+												  object-api-name={objectApiName}
+												  field-data={fieldData}
+												  field-columns={fieldColumns}
+												  render-edit-button={renderEditButton}
+												  onenableedit={enableEditing}>
+			</c-character_counter_record_view_form>
+			<c-character_counter_record_edit_component if:true={userEditingOrCreating}
+													   class="toggle"
+													   record-id={recordId}
+													   object-api-name={objectApiName}
+													   field-data={fieldData}
+													   field-columns={fieldColumns}
+													   character-warning-threshold={characterWarningThreshold}
+													   render-save-button={renderSaveButton}
+													   ondisableedit={disableEditing}
+													   onupdatefielddata={updateFieldData}>
+			</c-character_counter_record_edit_component>
+		</lightning-accordion-section>
+		<lightning-accordion-section class="slds-hidden"></lightning-accordion-section>
+	</lightning-accordion>
+</template>

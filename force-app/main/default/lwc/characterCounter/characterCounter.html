@@ -1,0 +1,10 @@
+<template><lightning-input
+    label="Account Name"
+    name="Name"
+    value={name}
+    maxlength="255"
+    onchange={handleChange}
+    oninput={handleInput}>
+</lightning-input>
+<div class="char-counter">{nameLength} / 255</div>
+</template>

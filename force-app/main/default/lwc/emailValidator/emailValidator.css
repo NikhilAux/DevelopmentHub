@@ -1,0 +1,11 @@
+.success-text {
+    color: green;
+}
+
+.error-text {
+    color: red;
+}
+
+.warning-text {
+    color: orange;
+}

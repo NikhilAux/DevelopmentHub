@@ -1,0 +1,8 @@
+<apex:page controller="quickBooksOAuthHandler" action="{!getQuickBooksOAuthTokens}" >
+    <apex:form >
+        <apex:pageMessage rendered="{!isAuthorized}" summary="Successfully Authorized with QuickBooks" severity="confirm" strength="3"/>
+        <apex:outputPanel rendered="{!showHideOAuthButton}"> 
+            <apex:commandButton value="Authorize QuickBooks Online" onclick="window.open('{!buttonLink}', '_blank ');window.close();"/>
+        </apex:outputPanel>
+    </apex:form> 
+</apex:page>
