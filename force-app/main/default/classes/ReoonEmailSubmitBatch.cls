@@ -10,6 +10,7 @@ global class ReoonEmailSubmitBatch implements Database.Batchable<SObject>, Datab
     global void execute(Database.BatchableContext bc, List<SObject> scope) {
         List<Contact> contacts = (List<Contact>)scope;
         List<String> emailList = new List<String>();
+        List<Integer> intList = new List<Integer>(); 
         
         for (Contact c : contacts) {
             emailList.add(c.Email);
